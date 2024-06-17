@@ -14,13 +14,14 @@ import java.util.UUID;
 
 public class AsterixService {
     private final CharacterRepo characterRepo;
+    private final IdService idService;
 
     public List<Character> getCharacters() {
         return characterRepo.findAll();
     }
 
-    public static Character fromDTO(CharacterDTO dto) {
-        String id = UUID.randomUUID().toString();
+    public Character fromDTO(CharacterDTO dto) {
+        String id = idService.randomId();
         return new Character(id,dto.name(),dto.age(),dto.profession());
     }
 
