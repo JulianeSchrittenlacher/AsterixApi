@@ -16,8 +16,10 @@ public class AsterixService {
     private final CharacterRepo characterRepo;
     private final IdService idService;
 
-    public List<Character> getCharacters() {
-        return characterRepo.findAll();
+    public List<Character> getCharacters(int age) {
+        return characterRepo.findAll().stream()
+                .filter(c -> c.age()<=age)
+                .toList();
     }
 
     public Character fromDTO(CharacterDTO dto) {

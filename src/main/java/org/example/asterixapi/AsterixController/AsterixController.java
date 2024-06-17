@@ -17,8 +17,9 @@ public class AsterixController {
     private final AsterixService asterixService;
 
     @GetMapping("/character")
-    public List<Character> getCharacters() {
-        return asterixService.getCharacters();
+    public List<Character> getCharacters(
+            @RequestParam() int age) {
+        return asterixService.getCharacters(age);
     }
     @PostMapping("/character/create")
     public Character addCharacter(@RequestBody CharacterDTO characterDTO) {
